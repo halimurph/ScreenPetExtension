@@ -33,13 +33,6 @@ class Cat extends Pet {
     this.drawSantaHat(p);
 }
     
-    this.drawWindMillHat(p);
-    this.drawCollar(p);
-    this.drawCowboyHat(p);
-    this.drawGentlemanHat(p);
-    this.drawSunglass(p);
-    this.drawSantaHat(p);
-}
 
     loadMedia(p) {
         this.windmillHat = p.loadImage("sprites/windmillHat.png");
