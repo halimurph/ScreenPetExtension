@@ -325,18 +325,28 @@ class ScreenPetGame {
     }
 
     mouseClicked(p) {
-        this.thePig.mouseClicked(p); // <- Delegation: Controller tells the model to feed the pet
+    // Check if pig was clicked
+    let dPig = p.dist(p.mouseX, p.mouseY, this.thePig.xLocation, this.thePig.yLocation);
+    if (dPig < 30 && this.currentPet === this.thePig) {
+        this.thePig.mouseClicked(p);
         this.thePig.chaseMouse(p);
+    }
+    
+    // Check if chicken was clicked
+    let dChicken = p.dist(p.mouseX, p.mouseY, this.theChicken.xLocation, this.theChicken.yLocation);
+    if (dChicken < 30 && this.currentPet === this.theChicken) {
         this.theChicken.mouseClicked(p);
         this.theChicken.runAway(p);
-        if (p.mouseX >= this.theStore.getRectX() && p.mouseX <= this.theStore.getRectX() + 50 &&
-            p.mouseY >= this.theStore.getRectY() && p.mouseY <= this.theStore.getRectY() + 25) {
-            this.theStore.storeBox(p);
-        } else if (p.mouseX >= this.getRectX() && p.mouseX <= this.getRectX() + 50 &&
-                   p.mouseY >= this.getRectY() && p.mouseY <= this.getRectY() + 25) {
-            this.petBox(p);
-        }
     }
+    
+    if (p.mouseX >= this.theStore.getRectX() && p.mouseX <= this.theStore.getRectX() + 50 &&
+        p.mouseY >= this.theStore.getRectY() && p.mouseY <= this.theStore.getRectY() + 25) {
+        this.theStore.storeBox(p);
+    } else if (p.mouseX >= this.getRectX() && p.mouseX <= this.getRectX() + 50 &&
+               p.mouseY >= this.getRectY() && p.mouseY <= this.getRectY() + 25) {
+        this.petBox(p);
+    }
+}
 
     mousePressed(p, x, y) {
         this.thePet.mousePressed(p, x, y);
