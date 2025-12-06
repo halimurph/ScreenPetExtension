@@ -3,7 +3,7 @@ let screenPet;
 const fileSeparator = "/"; // Use forward slash for web paths
 
 function setup() {
-    createCanvas(800, 600);
+    createCanvas(windowWidth, windowHeight);
     screenPet = new ScreenPetGame();
     screenPet.loadMedia(window);
 }
@@ -12,7 +12,9 @@ function draw() {
     background(255);
     screenPet.draw(window);
 }
-
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
 function mouseClicked() {
     screenPet.mouseClicked(window);
 }
