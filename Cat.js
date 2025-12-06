@@ -15,15 +15,23 @@ class Cat extends Pet {
         if (p.frameCount % 10 === 0) {
             this.currentFrame = (this.currentFrame + 1) % this.numFrames;
         }
-        p.image(this.catImages[this.currentFrame], this.xLocation - 40, this.yLocation - 60);
-        //                                                                                    ↑   ↑  Add these!
+        p.image(this.catImages[this.currentFrame], this.xLocation - 50, this.yLocation - 50, 100, 100);
+        //                                                              ↑-50           ↑-50    ↑100 ↑100
     } else {
         if (p.frameCount % 10 === 0) {
             this.currentFrame = (this.currentFrame + 1) % this.numFrames;
         }
-        p.image(this.catImages2[this.currentFrame], this.xLocation - 40, this.yLocation - 60);
-        //                                                                                     ↑   ↑  Add these!
+        p.image(this.catImages2[this.currentFrame], this.xLocation - 50, this.yLocation - 50, 100, 100);
+        //                                                               ↑-50           ↑-50    ↑100 ↑100
     }
+    
+    this.drawWindMillHat(p);
+    this.drawCollar(p);
+    this.drawCowboyHat(p);
+    this.drawGentlemanHat(p);
+    this.drawSunglass(p);
+    this.drawSantaHat(p);
+}
     
     this.drawWindMillHat(p);
     this.drawCollar(p);
