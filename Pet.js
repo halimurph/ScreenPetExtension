@@ -20,28 +20,28 @@ class Pet {
         this.cat = null;
         this.cow = null;
 
-        this.windmillHat = null;
-        this.windmillHat2 = null;
+        this.windmillHatImg = null;
+        this.windmillHat2Img = null;
         this.showWindMillHat = false;
 
-        this.collar = null;
-        this.collar2 = null;
+        this.collarImg = null;
+        this.collar2Img = null;
         this.showCollar = false;
 
-        this.gentlemanHat = null;
-        this.gentlemanHat2 = null;
+        this.gentlemanHatImg = null;
+        this.gentlemanHat2Img = null;
         this.showGentlemanHat = false;
 
-        this.sunglasses = null;
-        this.sunglasses2 = null;
+        this.sunglassesImg = null;
+        this.sunglasses2Img = null;
         this.showSunglasses = false;
 
-        this.cowboyHat = null;
-        this.cowboyHat2 = null;
+        this.cowboyHatImg = null;
+        this.cowboyHat2Img = null;
         this.showCowboyHat = false;
 
-        this.santaHat = null;
-        this.santaHat2 = null;
+        this.santaHatImg = null;
+        this.santaHat2Img = null;
         this.showSantaHat = false;
 
         this.moveSomewhere();
