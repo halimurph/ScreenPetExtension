@@ -142,7 +142,7 @@ class Pig extends Pet {
     drawSunglass(p) {
         if (this.showSunglasses) {
             if (this.movingLeft) {
-                p.image(this.sunglasses2, this.getXLocation() - 13, this.getYLocation() - 10, 15, 15);
+                p.image(this.sunglasses2, this.getXLocation() - 15, this.getYLocation() - 10, 15, 15);
             } else {
                 p.image(this.sunglasses, this.getXLocation() + 4, this.getYLocation() - 10, 15, 15);
             }
