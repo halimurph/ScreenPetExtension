@@ -1,7 +1,7 @@
 class Dragon extends Pet {
     constructor(petLocked, x, y) {
         super("Dragon", petLocked, x, y);
-
+        
         this.isClick = false;
         this.numFramesFly = 10;
         this.numFrames = 8;
@@ -15,25 +15,30 @@ class Dragon extends Pet {
     draw(p) {
         super.draw(p);
 
+        p.fill(255, 0, 0);
+        p.textSize(20);
         if (this.isClick) {
-            if (p.frameCount % 10 === 0) {
-                this.currentFrame = (this.currentFrame + 1) % this.numFramesFly;
-            }
-
             if (this.movingLeft) {
+                if (p.frameCount % 10 === 0) {
+                    this.currentFrame = (this.currentFrame + 1) % this.numFramesFly;
+                }
                 p.image(this.flyImages[this.currentFrame], this.xLocation - 10, this.yLocation - 20);
             } else {
+                if (p.frameCount % 10 === 0) {
+                    this.currentFrame = (this.currentFrame + 1) % this.numFramesFly;
+                }
                 p.image(this.flyImages2[this.currentFrame], this.xLocation - 10, this.yLocation - 20);
             }
-
         } else {
-            if (p.frameCount % 10 === 0) {
-                this.currentFrame = (this.currentFrame + 1) % this.numFrames;
-            }
-
             if (this.movingLeft) {
+                if (p.frameCount % 10 === 0) {
+                    this.currentFrame = (this.currentFrame + 1) % this.numFrames;
+                }
                 p.image(this.dragonImages[this.currentFrame], this.xLocation - 5, this.yLocation - 20);
             } else {
+                if (p.frameCount % 10 === 0) {
+                    this.currentFrame = (this.currentFrame + 1) % this.numFrames;
+                }
                 p.image(this.dragonImages2[this.currentFrame], this.xLocation - 5, this.yLocation - 20);
             }
         }
@@ -52,22 +57,52 @@ class Dragon extends Pet {
     }
 
     loadMedia(p) {
-        for (let i = 0; i < this.numFrames; i++) {
-            this.dragonImages[i] = p.loadImage(`sprites/Dragon-${(i % 4) + 1}.png`);
-            this.dragonImages2[i] = p.loadImage(`sprites/Dragon-${(i % 4) + 1}flipped.png`);
-        }
+        this.dragonImages2[0] = p.loadImage("sprites/Dragon-1.png");
+        this.dragonImages2[1] = p.loadImage("sprites/Dragon-2.png");
+        this.dragonImages2[2] = p.loadImage("sprites/Dragon-3.png");
+        this.dragonImages2[3] = p.loadImage("sprites/Dragon-4.png");
+        this.dragonImages2[4] = p.loadImage("sprites/Dragon-1.png");
+        this.dragonImages2[5] = p.loadImage("sprites/Dragon-2.png");
+        this.dragonImages2[6] = p.loadImage("sprites/Dragon-3.png");
+        this.dragonImages2[7] = p.loadImage("sprites/Dragon-4.png");
 
-        for (let i = 0; i < this.numFramesFly; i++) {
-            this.flyImages2[i] = p.loadImage(`sprites/fly-${(i % 4) + 1}.png`);
-            this.flyImages[i] = p.loadImage(`sprites/fly-${(i % 4) + 1}flipped.png`);
-        }
+        this.dragonImages[0] = p.loadImage("sprites/Dragon-1flipped.png");
+        this.dragonImages[1] = p.loadImage("sprites/Dragon-2flipped.png");
+        this.dragonImages[2] = p.loadImage("sprites/Dragon-3flipped.png");
+        this.dragonImages[3] = p.loadImage("sprites/Dragon-4flipped.png");
+        this.dragonImages[4] = p.loadImage("sprites/Dragon-1flipped.png");
+        this.dragonImages[5] = p.loadImage("sprites/Dragon-2flipped.png");
+        this.dragonImages[6] = p.loadImage("sprites/Dragon-3flipped.png");
+        this.dragonImages[7] = p.loadImage("sprites/Dragon-4flipped.png");
 
-        for (let i = 0; i < this.numFrames; i++) {
+        for (let i = 0; i < this.dragonImages.length; i++) {
             this.dragonImages[i].resize(25, 20);
             this.dragonImages2[i].resize(25, 20);
         }
 
-        for (let i = 0; i < this.numFramesFly; i++) {
+        this.flyImages2[0] = p.loadImage("sprites/fly-1.png");
+        this.flyImages2[1] = p.loadImage("sprites/fly-2.png");
+        this.flyImages2[2] = p.loadImage("sprites/fly-3.png");
+        this.flyImages2[3] = p.loadImage("sprites/fly-4.png");
+        this.flyImages2[4] = p.loadImage("sprites/fly-1.png");
+        this.flyImages2[5] = p.loadImage("sprites/fly-2.png");
+        this.flyImages2[6] = p.loadImage("sprites/fly-3.png");
+        this.flyImages2[7] = p.loadImage("sprites/fly-4.png");
+        this.flyImages2[8] = p.loadImage("sprites/fly-4.png");
+        this.flyImages2[9] = p.loadImage("sprites/fly-4.png");
+
+        this.flyImages[0] = p.loadImage("sprites/fly-1flipped.png");
+        this.flyImages[1] = p.loadImage("sprites/fly-2flipped.png");
+        this.flyImages[2] = p.loadImage("sprites/fly-3flipped.png");
+        this.flyImages[3] = p.loadImage("sprites/fly-4flipped.png");
+        this.flyImages[4] = p.loadImage("sprites/fly-1flipped.png");
+        this.flyImages[5] = p.loadImage("sprites/fly-2flipped.png");
+        this.flyImages[6] = p.loadImage("sprites/fly-3flipped.png");
+        this.flyImages[7] = p.loadImage("sprites/fly-4flipped.png");
+        this.flyImages[8] = p.loadImage("sprites/fly-4flipped.png");
+        this.flyImages[9] = p.loadImage("sprites/fly-4flipped.png");
+
+        for (let i = 0; i < this.flyImages.length; i++) {
             this.flyImages[i].resize(50, 30);
             this.flyImages2[i].resize(50, 30);
         }
