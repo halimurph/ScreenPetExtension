@@ -151,9 +151,9 @@ class Dragon extends Pet {
     drawCollar(p) {
         if (this.showCollar) {
             if (this.movingLeft) {
-                p.image(this.collar2, this.getXLocation() - 5, this.getYLocation() - 10,12,12);
+                p.image(this.collar2, this.getXLocation() - 2, this.getYLocation() - 5,12,12);
             } else {
-                p.image(this.collar, this.getXLocation() + 7, this.getYLocation() - 10,12,12);
+                p.image(this.collar, this.getXLocation() + 5, this.getYLocation() - 5,12,12);
             }
         }
     }
@@ -171,9 +171,9 @@ class Dragon extends Pet {
     drawSunglass(p) {
         if (this.showSunglasses) {
             if (this.movingLeft) {
-                p.image(this.sunglasses2, this.getXLocation() - 5, this.getYLocation() - 18,12,12);
+                p.image(this.sunglasses2, this.getXLocation() - 5, this.getYLocation() - 8,12,12);
             } else {
-                p.image(this.sunglasses, this.getXLocation() + 7, this.getYLocation() - 18,12,12);
+                p.image(this.sunglasses, this.getXLocation() + 4, this.getYLocation() - 8,12,12);
             }
         }
     }
