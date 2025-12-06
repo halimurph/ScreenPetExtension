@@ -9,25 +9,27 @@ class Cat extends Pet {
     }
 
     draw(p) {
-        super.draw(p);
+    super.draw(p);
 
-        if (this.movingLeft) {
-            if (p.frameCount % 10 === 0) {
-                this.currentFrame = (this.currentFrame + 1) % this.numFrames;
-            }
-                p.image(this.catImages[this.currentFrame], this.xLocation - 9, this.yLocation - 12);        } else {
-            if (p.frameCount % 10 === 0) {
-                this.currentFrame = (this.currentFrame + 1) % this.numFrames;
-            }
-                p.image(this.catImages[this.currentFrame], this.xLocation - 9, this.yLocation - 12);        }
-        
-        this.drawWindMillHat(p);
-        this.drawCollar(p);
-        this.drawCowboyHat(p);
-        this.drawGentlemanHat(p);
-        this.drawSunglass(p);
-        this.drawSantaHat(p);
+    if (this.movingLeft) {
+        if (p.frameCount % 10 === 0) {
+            this.currentFrame = (this.currentFrame + 1) % this.numFrames;
+        }
+        p.image(this.catImages[this.currentFrame], this.xLocation - 9, this.yLocation - 9);
+    } else {
+        if (p.frameCount % 10 === 0) {
+            this.currentFrame = (this.currentFrame + 1) % this.numFrames;
+        }
+        p.image(this.catImages2[this.currentFrame], this.xLocation - 9, this.yLocation - 9);  // ← catImages2!
     }
+    
+    this.drawWindMillHat(p);
+    this.drawCollar(p);
+    this.drawCowboyHat(p);
+    this.drawGentlemanHat(p);
+    this.drawSunglass(p);
+    this.drawSantaHat(p);
+}
 
     loadMedia(p) {
         this.windmillHat = p.loadImage("sprites/windmillHat.png");
