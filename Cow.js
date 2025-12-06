@@ -95,9 +95,9 @@ class Cow extends Pet {
     drawWindMillHat(p) {
         if (this.showWindMillHat) {
             if (this.movingLeft) {
-                p.image(this.windmillHat, this.getXLocation() - 10, this.getYLocation() - 22,12,12);
+                p.image(this.windmillHat, this.getXLocation() - 12, this.getYLocation() - 22,12,12);
             } else {
-                p.image(this.windmillHat2, this.getXLocation() + 5, this.getYLocation() - 22,12,12);
+                p.image(this.windmillHat2, this.getXLocation() + 3, this.getYLocation() - 22,12,12);
             }
         }
     }
@@ -105,9 +105,9 @@ class Cow extends Pet {
     drawCollar(p) {
         if (this.showCollar) {
             if (this.movingLeft) {
-                p.image(this.collar2, this.getXLocation() - 10, this.getYLocation() - 22,12,12);
+                p.image(this.collar2, this.getXLocation() - 10, this.getYLocation() - 15,12,12);
             } else {
-                p.image(this.collar, this.getXLocation() + 2, this.getYLocation() - 22,12,12);
+                p.image(this.collar, this.getXLocation() + 2, this.getYLocation() - 15,12,12);
             }
         }
     }
@@ -115,9 +115,9 @@ class Cow extends Pet {
     drawGentlemanHat(p) {
         if (this.showGentlemanHat) {
             if (this.movingLeft) {
-                p.image(this.gentlemanHat, this.getXLocation() - 10, this.getYLocation() - 22,12,12);
+                p.image(this.gentlemanHat, this.getXLocation() - 12, this.getYLocation() - 20,12,12);
             } else {
-                p.image(this.gentlemanHat2, this.getXLocation() + 5, this.getYLocation() - 22,12,12);
+                p.image(this.gentlemanHat2, this.getXLocation() + 3, this.getYLocation() - 20,12,12);
             }
         }
     }
@@ -135,9 +135,9 @@ class Cow extends Pet {
     drawCowboyHat(p) {
         if (this.showCowboyHat) {
             if (this.movingLeft) {
-                p.image(this.cowboyHat, this.getXLocation() - 10, this.getYLocation() - 22,12,12);
+                p.image(this.cowboyHat, this.getXLocation() - 12, this.getYLocation() - 22,12,12);
             } else {
-                p.image(this.cowboyHat2, this.getXLocation() + 5, this.getYLocation() - 22,12,12);
+                p.image(this.cowboyHat2, this.getXLocation() + 3, this.getYLocation() - 22,12,12);
             }
         }
     }
@@ -145,9 +145,9 @@ class Cow extends Pet {
     drawSantaHat(p) {
         if (this.showSantaHat) {
             if (this.movingLeft) {
-                p.image(this.santaHat2, this.getXLocation() - 10, this.getYLocation() - 22,12,12);
+                p.image(this.santaHat2, this.getXLocation() - 12, this.getYLocation() - 22,12,12);
             } else {
-                p.image(this.santaHat, this.getXLocation() + 5, this.getYLocation() - 22,12,12);
+                p.image(this.santaHat, this.getXLocation() + 3, this.getYLocation() - 22,12,12);
             }
         }
     }
