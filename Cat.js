@@ -48,8 +48,8 @@ class Cat extends Pet {
         this.catImages2[2] = p.loadImage("sprites/Gato-3flipped.png");
         
         for (let i = 0; i < this.catImages.length; i++) {
-            this.catImages[i].resize(25, 25);
-            this.catImages2[i].resize(25, 25);
+            this.catImages[i].resize(100, 100);
+            this.catImages2[i].resize(100, 100);
         }
         
         this.collar = p.loadImage("sprites/collar.png");
