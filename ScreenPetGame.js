@@ -161,7 +161,7 @@ class ScreenPetGame {
 
         p.fill(0);
         p.textSize(12);
-        p.textAlign(CENTER, CENTER);
+        p.textAlign(p.CENTER, p.CENTER);
         p.text("Pet", this.getRectX() + 25, this.getRectY() + 12);  // Always say "Pet"
 
         // Now handle contents inside
@@ -171,10 +171,10 @@ class ScreenPetGame {
 
             p.fill(0);
             p.textSize(12);
-            p.textAlign(CENTER, CENTER);
+            p.textAlign(p.CENTER, p.CENTER);
             p.text("Pet", this.getRectX() + 25, this.getRectY() + 12);
             // Show pets
-            p.textAlign(LEFT, CENTER);
+            p.textAlign(p.LEFT, p.CENTER);
             for (let i = 0; i < this.pets.length; i++) {
                 let y = this.getRectY() + 30 + i * 20;
                 p.fill(this.selectedPetIndex === i ? 200 : 255);
@@ -193,7 +193,7 @@ class ScreenPetGame {
             // Always draw the box
             p.fill(0);
             p.textSize(12);
-            p.textAlign(CENTER, CENTER);
+            p.textAlign(p.CENTER, p.CENTER);
             p.text("Pet", this.getRectX() + 25, this.getRectY() + 12);
             // Show store
             this.theStore.draw(p);  // Store still only draws when not in pet mode
@@ -207,14 +207,14 @@ class ScreenPetGame {
 
         p.fill(0);
         p.textSize(20);
-        p.textAlign(CENTER, CENTER);
+        p.textAlign(p.CENTER, p.CENTER);
         p.text("Collected " + this.collectedCoinCount + " coins", 100, 500);
 
         this.moveTowardsCoin(p);
 
         p.fill(0);
         p.textSize(20);
-        p.textAlign(LEFT, CENTER);
+        p.textAlign(p.LEFT, p.CENTER);
         p.text(this.message, 30, 550);
 
         this.regenerateCoinsIfNeeded();
