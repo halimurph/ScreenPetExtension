@@ -15,13 +15,11 @@ class Cat extends Pet {
             if (p.frameCount % 10 === 0) {
                 this.currentFrame = (this.currentFrame + 1) % this.numFrames;
             }
-            p.image(this.catImages[this.currentFrame], this.xLocation - 40, this.yLocation - 60);
-        } else {
+                p.image(this.catImages[this.currentFrame], this.xLocation - 12, this.yLocation - 12);        } else {
             if (p.frameCount % 10 === 0) {
                 this.currentFrame = (this.currentFrame + 1) % this.numFrames;
             }
-            p.image(this.catImages2[this.currentFrame], this.xLocation - 40, this.yLocation - 60);
-        }
+                p.image(this.catImages[this.currentFrame], this.xLocation - 12, this.yLocation - 12);        }
         
         this.drawWindMillHat(p);
         this.drawCollar(p);
@@ -46,8 +44,8 @@ class Cat extends Pet {
         this.catImages2[2] = p.loadImage("sprites/Gato-3flipped.png");
         
         for (let i = 0; i < this.catImages.length; i++) {
-            this.catImages[i].resize(100, 100);
-            this.catImages2[i].resize(100, 100);
+            this.catImages[i].resize(25, 25);
+            this.catImages2[i].resize(25, 25);
         }
         
         this.collar = p.loadImage("sprites/collar.png");
