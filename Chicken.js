@@ -20,12 +20,12 @@ class Chicken extends Pet {
             if (p.frameCount % 10 === 0) {
                 this.currentFrame = (this.currentFrame + 1) % this.numFrames;
             }
-            p.image(this.chickenImages[this.currentFrame], this.xLocation - 50, this.yLocation - 50,20,15);
+            p.image(this.chickenImages[this.currentFrame], this.xLocation - 10, this.yLocation - 8,20,15);
         } else {
             if (p.frameCount % 10 === 0) {
                 this.currentFrame = (this.currentFrame + 1) % this.numFrames;
             }
-            p.image(this.chickenImages2[this.currentFrame], this.xLocation - 50, this.yLocation - 50,20,15);
+            p.image(this.chickenImages2[this.currentFrame], this.xLocation - 10, this.yLocation - 8,20,15);
         }
 
         if (this.isClick === true) {
