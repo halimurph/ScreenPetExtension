@@ -20,24 +20,24 @@ class Horse extends Pet {
                 if (p.frameCount % 10 === 0) {
                     this.currentFrame = (this.currentFrame + 1) % this.numFramesUni;
                 }
-                p.image(this.unicornImages[this.currentFrame], this.xLocation - 10, this.yLocation - 20);
+                p.image(this.unicornImages[this.currentFrame], this.xLocation - 17, this.yLocation - 12,35,25);
             } else {
                 if (p.frameCount % 10 === 0) {
                     this.currentFrame = (this.currentFrame + 1) % this.numFramesUni;
                 }
-                p.image(this.unicornImages2[this.currentFrame], this.xLocation - 10, this.yLocation - 20);
+                p.image(this.unicornImages2[this.currentFrame], this.xLocation - 17, this.yLocation - 12,35,25);
             }
         } else {
             if (this.movingLeft) {
                 if (p.frameCount % 10 === 0) {
                     this.currentFrame = (this.currentFrame + 1) % this.numFrames;
                 }
-                p.image(this.horseImages[this.currentFrame], this.xLocation - 10, this.yLocation - 20);
+                p.image(this.horseImages[this.currentFrame], this.xLocation - 17, this.yLocation - 12,35,25);
             } else {
                 if (p.frameCount % 10 === 0) {
                     this.currentFrame = (this.currentFrame + 1) % this.numFrames;
                 }
-                p.image(this.horseImages2[this.currentFrame], this.xLocation - 10, this.yLocation - 20);
+                p.image(this.horseImages2[this.currentFrame], this.xLocation - 17, this.yLocation - 12,35,25);
             }
         }
 
