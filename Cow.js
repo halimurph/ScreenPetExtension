@@ -105,9 +105,9 @@ class Cow extends Pet {
     drawCollar(p) {
         if (this.showCollar) {
             if (this.movingLeft) {
-                p.image(this.collar2, this.getXLocation() - 10, this.getYLocation() - 10,12,12);
+                p.image(this.collar2, this.getXLocation() - 10, this.getYLocation() - 5,12,12);
             } else {
-                p.image(this.collar, this.getXLocation() + 2, this.getYLocation() - 10,12,12);
+                p.image(this.collar, this.getXLocation() + 2, this.getYLocation() - 5,12,12);
             }
         }
     }
