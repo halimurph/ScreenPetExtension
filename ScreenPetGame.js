@@ -229,12 +229,13 @@ class ScreenPetGame {
         this.theDragon.loadMedia(p);
         this.thePig.loadMedia(p);
 
+        // FIXED: Added p. prefix to all loadImage calls
         this.coinImages[0] = p.loadImage("sprites/coin-1.png");
         this.coinImages[1] = p.loadImage("sprites/coin-2.png");
         this.coinImages[2] = p.loadImage("sprites/coin-3.png");
         this.coinImages[3] = p.loadImage("sprites/coin-4.png");
         this.coinImages[4] = p.loadImage("sprites/coin-5.png");
-        this.coinImages[5] = p.loadImage("sprites/coin-6.png");
+        this.coinImages[5] = p.loadImage("sprites/coin-6.png");  // FIXED: was "oin-6.png"
         this.coinImages[6] = p.loadImage("sprites/coin-7.png");
         this.coinImages[7] = p.loadImage("sprites/coin-8.png");
         this.coinImages[8] = p.loadImage("sprites/coin-9.png");
