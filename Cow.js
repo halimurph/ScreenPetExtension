@@ -26,7 +26,7 @@ class Cow extends Pet {
         }
 
         for (let poop of this.poopsList) {
-            p.image(this.poopy, poop.x + 20, poop.y);
+            p.image(this.poopy, poop.x + 20, poop.y,10,10);
         }
 
         this.drawWindMillHat(p);
