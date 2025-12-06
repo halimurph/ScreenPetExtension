@@ -20,12 +20,12 @@ class Pig extends Pet {
             if (p.frameCount % 10 === 0) {
                 this.currentFrame = (this.currentFrame + 1) % this.numFrames;
             }
-            p.image(this.pigImages[this.currentFrame], this.xLocation - 5, this.yLocation - 20);
+            p.image(this.pigImages[this.currentFrame], this.xLocation - 15, this.yLocation - 10,30,20);
         } else {
             if (p.frameCount % 10 === 0) {
                 this.currentFrame = (this.currentFrame + 1) % this.numFrames;
             }
-            p.image(this.pigImages2[this.currentFrame], this.xLocation - 5, this.yLocation - 20);
+            p.image(this.pigImages2[this.currentFrame], this.xLocation - 15, this.yLocation - 10,30,20);
         }
 
         if (this.isClick === true) {
