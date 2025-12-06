@@ -1,8 +1,8 @@
 class Cow extends Pet {
     constructor(petLocked, x, y) {
         super("Cow", petLocked, x, y);
-
-        this.poops = [];
+        
+        this.poopsList = []; // store positions of poop
         this.numFrames = 4;
         this.currentFrame = 0;
         this.cowImages = new Array(this.numFrames);
@@ -25,7 +25,7 @@ class Cow extends Pet {
             p.image(this.cowImages2[this.currentFrame], this.xLocation - 10, this.yLocation - 20);
         }
 
-        for (let poop of this.poops) {
+        for (let poop of this.poopsList) {
             p.image(this.poopy, poop.x + 20, poop.y);
         }
 
@@ -37,8 +37,9 @@ class Cow extends Pet {
         this.drawSantaHat(p);
     }
 
-    dropPoop(p) {
-        this.poops.push(p.createVector(this.xLocation, this.yLocation));
+    // action: leave a poop at current location
+    poops() {
+        this.poopsList.push(createVector(this.xLocation, this.yLocation));
     }
 
     loadMedia(p) {
