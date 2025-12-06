@@ -456,7 +456,7 @@ class ScreenPetGame {
             if (this.movingLeft) {
                 p.image(this.babyDuckImages[this.currentFrame], this.babyDuckX + 5, this.babyDuckY - 10,10,10);
             } else {
-                p.image(this.babyDuckImages2[this.currentFrame], this.babyDuckX + 5, this.babyDuckY - 10),10,10);
+                p.image(this.babyDuckImages2[this.currentFrame], this.babyDuckX + 5, this.babyDuckY - 10,10,10);
             }
         }
     }
