@@ -24,7 +24,7 @@ class Cat extends Pet {
         }
         
         this.windMillHat(p);
-        this.collar(p);
+        this.drawCollar(p);
         this.cowboyHat(p);
         this.gentlemanHat(p);
         this.sunglass(p);
@@ -86,7 +86,7 @@ class Cat extends Pet {
         }
     }
 
-    collar(p) {
+    drawCollar(p) {
         if (this.showCollar) {
             if (this.movingLeft) {
                 p.image(this.collar2Img, this.getXLocation() - 2, this.getYLocation() - 14);
