@@ -229,74 +229,74 @@ class ScreenPetGame {
         this.theDragon.loadMedia(p);
         this.thePig.loadMedia(p);
 
-        this.coinImages[0] = loadImage("sprites/coin-1.png");
-        this.coinImages[1] = loadImage("sprites/coin-2.png");
-        this.coinImages[2] = loadImage("sprites/coin-3.png");
-        this.coinImages[3] = loadImage("sprites/coin-4.png");
-        this.coinImages[4] = loadImage("sprites/coin-5.png");
-        this.coinImages[5] = loadImage("sprites/coin-6.png");
-        this.coinImages[6] = loadImage("sprites/coin-7.png");
-        this.coinImages[7] = loadImage("sprites/coin-8.png");
-        this.coinImages[8] = loadImage("sprites/coin-9.png");
-        this.coinImages[9] = loadImage("sprites/coin-10.png");
-        this.coinImages[10] = loadImage("sprites/coin-11.png");
-        this.coinImages[11] = loadImage("sprites/coin-12.png");
-        this.coinImages[12] = loadImage("sprites/coin-13.png");
-        this.coinImages[13] = loadImage("sprites/coin-14.png");
-        this.coinImages[14] = loadImage("sprites/coin-15.png");
-        this.coinImages[15] = loadImage("sprites/coin-16.png");
-        this.coinImages[16] = loadImage("sprites/coin-17.png");
-        this.coinImages[17] = loadImage("sprites/coin-18.png");
-        this.coinImages[18] = loadImage("sprites/coin-19.png");
-        this.coinImages[19] = loadImage("sprites/coin-20.png");
-        this.coinImages[20] = loadImage("sprites/coin-21.png");
-        this.coinImages[21] = loadImage("sprites/coin-22.png");
-        this.coinImages[22] = loadImage("sprites/coin-23.png");
-        this.coinImages[23] = loadImage("sprites/coin-24.png");
-        this.coinImages[24] = loadImage("sprites/coin-25.png");
-        this.coinImages[25] = loadImage("sprites/coin-26.png");
-        this.coinImages[26] = loadImage("sprites/coin-27.png");
-        this.coinImages[27] = loadImage("sprites/coin-28.png");
-        this.coinImages[28] = loadImage("sprites/coin-29.png");
-        this.coinImages[29] = loadImage("sprites/coin-30.png");
-        this.coinImages[30] = loadImage("sprites/coin-31.png");
-        this.coinImages[31] = loadImage("sprites/coin-32.png");
-        this.coinImages[32] = loadImage("sprites/coin-33.png");
-        this.coinImages[33] = loadImage("sprites/coin-34.png");
-        this.coinImages[34] = loadImage("sprites/coin-35.png");
-        this.coinImages[35] = loadImage("sprites/coin-36.png");
+        this.coinImages[0] = p.loadImage("sprites/coin-1.png");
+        this.coinImages[1] = p.loadImage("sprites/coin-2.png");
+        this.coinImages[2] = p.loadImage("sprites/coin-3.png");
+        this.coinImages[3] = p.loadImage("sprites/coin-4.png");
+        this.coinImages[4] = p.loadImage("sprites/coin-5.png");
+        this.coinImages[5] = p.loadImage("sprites/coin-6.png");
+        this.coinImages[6] = p.loadImage("sprites/coin-7.png");
+        this.coinImages[7] = p.loadImage("sprites/coin-8.png");
+        this.coinImages[8] = p.loadImage("sprites/coin-9.png");
+        this.coinImages[9] = p.loadImage("sprites/coin-10.png");
+        this.coinImages[10] = p.loadImage("sprites/coin-11.png");
+        this.coinImages[11] = p.loadImage("sprites/coin-12.png");
+        this.coinImages[12] = p.loadImage("sprites/coin-13.png");
+        this.coinImages[13] = p.loadImage("sprites/coin-14.png");
+        this.coinImages[14] = p.loadImage("sprites/coin-15.png");
+        this.coinImages[15] = p.loadImage("sprites/coin-16.png");
+        this.coinImages[16] = p.loadImage("sprites/coin-17.png");
+        this.coinImages[17] = p.loadImage("sprites/coin-18.png");
+        this.coinImages[18] = p.loadImage("sprites/coin-19.png");
+        this.coinImages[19] = p.loadImage("sprites/coin-20.png");
+        this.coinImages[20] = p.loadImage("sprites/coin-21.png");
+        this.coinImages[21] = p.loadImage("sprites/coin-22.png");
+        this.coinImages[22] = p.loadImage("sprites/coin-23.png");
+        this.coinImages[23] = p.loadImage("sprites/coin-24.png");
+        this.coinImages[24] = p.loadImage("sprites/coin-25.png");
+        this.coinImages[25] = p.loadImage("sprites/coin-26.png");
+        this.coinImages[26] = p.loadImage("sprites/coin-27.png");
+        this.coinImages[27] = p.loadImage("sprites/coin-28.png");
+        this.coinImages[28] = p.loadImage("sprites/coin-29.png");
+        this.coinImages[29] = p.loadImage("sprites/coin-30.png");
+        this.coinImages[30] = p.loadImage("sprites/coin-31.png");
+        this.coinImages[31] = p.loadImage("sprites/coin-32.png");
+        this.coinImages[32] = p.loadImage("sprites/coin-33.png");
+        this.coinImages[33] = p.loadImage("sprites/coin-34.png");
+        this.coinImages[34] = p.loadImage("sprites/coin-35.png");
+        this.coinImages[35] = p.loadImage("sprites/coin-36.png");
 
         for (let i = 0; i < this.coinImages.length; i++) {
             this.coinImages[i].resize(10, 10);
         }
 
-        this.babyDuckImages[0] = loadImage("sprites/babyDuck-1.png");
-        this.babyDuckImages[1] = loadImage("sprites/babyDuck-2.png");
-        this.babyDuckImages[2] = loadImage("sprites/babyDuck-3.png");
-        this.babyDuckImages[3] = loadImage("sprites/babyDuck-4.png");
-        this.babyDuckImages[4] = loadImage("sprites/babyDuck-5.png");
-        this.babyDuckImages[5] = loadImage("sprites/babyDuck-6.png");
-        this.babyDuckImages[6] = loadImage("sprites/babyDuck-7.png");
-        this.babyDuckImages[7] = loadImage("sprites/babyDuck-8.png");
-        this.babyDuckImages[8] = loadImage("sprites/babyDuck-9.png");
-        this.babyDuckImages[9] = loadImage("sprites/babyDuck-10.png");
+        this.babyDuckImages[0] = p.loadImage("sprites/babyDuck-1.png");
+        this.babyDuckImages[1] = p.loadImage("sprites/babyDuck-2.png");
+        this.babyDuckImages[2] = p.loadImage("sprites/babyDuck-3.png");
+        this.babyDuckImages[3] = p.loadImage("sprites/babyDuck-4.png");
+        this.babyDuckImages[4] = p.loadImage("sprites/babyDuck-5.png");
+        this.babyDuckImages[5] = p.loadImage("sprites/babyDuck-6.png");
+        this.babyDuckImages[6] = p.loadImage("sprites/babyDuck-7.png");
+        this.babyDuckImages[7] = p.loadImage("sprites/babyDuck-8.png");
+        this.babyDuckImages[8] = p.loadImage("sprites/babyDuck-9.png");
+        this.babyDuckImages[9] = p.loadImage("sprites/babyDuck-10.png");
 
-        this.babyDuckImages2[0] = loadImage("sprites/babyDuck-1flipped.png");
-        this.babyDuckImages2[1] = loadImage("sprites/babyDuck-2flipped.png");
-        this.babyDuckImages2[2] = loadImage("sprites/babyDuck-3flipped.png");
-        this.babyDuckImages2[3] = loadImage("sprites/babyDuck-4flipped.png");
-        this.babyDuckImages2[4] = loadImage("sprites/babyDuck-5flipped.png");
-        this.babyDuckImages2[5] = loadImage("sprites/babyDuck-6flipped.png");
-        this.babyDuckImages2[6] = loadImage("sprites/babyDuck-7flipped.png");
-        this.babyDuckImages2[7] = loadImage("sprites/babyDuck-8flipped.png");
-        this.babyDuckImages2[8] = loadImage("sprites/babyDuck-9flipped.png");
-        this.babyDuckImages2[9] = loadImage("sprites/babyDuck-10flipped.png");
+        this.babyDuckImages2[0] = p.loadImage("sprites/babyDuck-1flipped.png");
+        this.babyDuckImages2[1] = p.loadImage("sprites/babyDuck-2flipped.png");
+        this.babyDuckImages2[2] = p.loadImage("sprites/babyDuck-3flipped.png");
+        this.babyDuckImages2[3] = p.loadImage("sprites/babyDuck-4flipped.png");
+        this.babyDuckImages2[4] = p.loadImage("sprites/babyDuck-5flipped.png");
+        this.babyDuckImages2[5] = p.loadImage("sprites/babyDuck-6flipped.png");
+        this.babyDuckImages2[6] = p.loadImage("sprites/babyDuck-7flipped.png");
+        this.babyDuckImages2[7] = p.loadImage("sprites/babyDuck-8flipped.png");
+        this.babyDuckImages2[8] = p.loadImage("sprites/babyDuck-9flipped.png");
+        this.babyDuckImages2[9] = p.loadImage("sprites/babyDuck-10flipped.png");
 
         for (let i = 0; i < this.babyDuckImages.length; i++) {
             this.babyDuckImages[i].resize(10, 10);
             this.babyDuckImages2[i].resize(10, 10);
         }
-        this.background = loadImage("sprites/background.jpg");
+        this.background = p.loadImage("sprites/background.jpg");
     }
 
     unlockPetsBasedOnItems() {
