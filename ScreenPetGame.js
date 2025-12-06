@@ -234,7 +234,7 @@ class ScreenPetGame {
         this.coinImages[2] = loadImage("sprites/coin-3.png");
         this.coinImages[3] = loadImage("sprites/coin-4.png");
         this.coinImages[4] = loadImage("sprites/coin-5.png");
-        this.coinImages[5] = loadImage("sprites/oin-6.png");
+        this.coinImages[5] = loadImage("sprites/coin-6.png");
         this.coinImages[6] = loadImage("sprites/coin-7.png");
         this.coinImages[7] = loadImage("sprites/coin-8.png");
         this.coinImages[8] = loadImage("sprites/coin-9.png");
