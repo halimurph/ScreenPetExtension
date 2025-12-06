@@ -50,30 +50,30 @@ class Cat extends Pet {
             this.catImages2[i].resize(100, 100);
         }
         
-        this.collarImg = p.loadImage("sprites/collar.png");
-        this.collarImg.resize(12, 12);
-        this.collar2Img = p.loadImage("sprites/collarflipped.png");
-        this.collar2Img.resize(12, 12);
+        this.collar = p.loadImage("sprites/collar.png");
+        this.collar.resize(12, 12);
+        this.collar2 = p.loadImage("sprites/collarflipped.png");
+        this.collar2.resize(12, 12);
 
-        this.cowboyHatImg = p.loadImage("sprites/cowboyHat.png");
-        this.cowboyHatImg.resize(12, 12);
-        this.cowboyHat2Img = p.loadImage("sprites/cowboyHatflipped.png");
-        this.cowboyHat2Img.resize(12, 12);
+        this.cowboyHat = p.loadImage("sprites/cowboyHat.png");
+        this.cowboyHat.resize(12, 12);
+        this.cowboyHat2 = p.loadImage("sprites/cowboyHatflipped.png");
+        this.cowboyHat2.resize(12, 12);
 
-        this.gentlemanHatImg = p.loadImage("sprites/gentlemanHat.png");
-        this.gentlemanHatImg.resize(12, 12);
-        this.gentlemanHat2Img = p.loadImage("sprites/gentlemanHatflipped.png");
-        this.gentlemanHat2Img.resize(12, 12);
+        this.gentlemanHat = p.loadImage("sprites/gentlemanHat.png");
+        this.gentlemanHat.resize(12, 12);
+        this.gentlemanHat2 = p.loadImage("sprites/gentlemanHatflipped.png");
+        this.gentlemanHat2.resize(12, 12);
 
-        this.sunglassesImg = p.loadImage("sprites/sunglasses.png");
-        this.sunglassesImg.resize(12, 12);
-        this.sunglasses2Img = p.loadImage("sprites/sunglassesflipped.png");
-        this.sunglasses2Img.resize(12, 12);
+        this.sunglasses = p.loadImage("sprites/sunglasses.png");
+        this.sunglasses.resize(12, 12);
+        this.sunglasses2 = p.loadImage("sprites/sunglassesflipped.png");
+        this.sunglasses2.resize(12, 12);
 
-        this.santaHatImg = p.loadImage("sprites/santaHat.png");
-        this.santaHatImg.resize(12, 12);
-        this.santaHat2Img = p.loadImage("sprites/santaHatflipped.png");
-        this.santaHat2Img.resize(12, 12);
+        this.santaHat = p.loadImage("sprites/santaHat.png");
+        this.santaHat.resize(12, 12);
+        this.santaHat2 = p.loadImage("sprites/santaHatflipped.png");
+        this.santaHat2.resize(12, 12);
     }
 
     drawWindMillHat(p) {
@@ -89,9 +89,9 @@ class Cat extends Pet {
     drawCollar(p) {
         if (this.showCollar) {
             if (this.movingLeft) {
-                p.image(this.collar2Img, this.getXLocation() - 2, this.getYLocation() - 14);
+                p.image(this.collar2, this.getXLocation() - 2, this.getYLocation() - 14);
             } else {
-                p.image(this.collarImg, this.getXLocation() + 10, this.getYLocation() - 14);
+                p.image(this.collar, this.getXLocation() + 10, this.getYLocation() - 14);
             }
         }
     }
@@ -99,9 +99,9 @@ class Cat extends Pet {
     drawCowboyHat(p) {
         if (this.showCowboyHat) {
             if (this.movingLeft) {
-                p.image(this.cowboyHatImg, this.getXLocation() - 3, this.getYLocation() - 25);
+                p.image(this.cowboyHat, this.getXLocation() - 3, this.getYLocation() - 25);
             } else {
-                p.image(this.cowboyHat2Img, this.getXLocation() + 10, this.getYLocation() - 25);
+                p.image(this.cowboyHat2, this.getXLocation() + 10, this.getYLocation() - 25);
             }
         }
     }
@@ -109,9 +109,9 @@ class Cat extends Pet {
     drawGentlemanHat(p) {
         if (this.showGentlemanHat) {
             if (this.movingLeft) {
-                p.image(this.gentlemanHatImg, this.getXLocation() - 3, this.getYLocation() - 25);
+                p.image(this.gentlemanHat, this.getXLocation() - 3, this.getYLocation() - 25);
             } else {
-                p.image(this.gentlemanHat2Img, this.getXLocation() + 10, this.getYLocation() - 25);
+                p.image(this.gentlemanHat2, this.getXLocation() + 10, this.getYLocation() - 25);
             }
         }
     }
@@ -119,9 +119,9 @@ class Cat extends Pet {
     drawSunglass(p) {
         if (this.showSunglasses) {
             if (this.movingLeft) {
-                p.image(this.sunglasses2Img, this.getXLocation() - 3, this.getYLocation() - 18);
+                p.image(this.sunglasses2, this.getXLocation() - 3, this.getYLocation() - 18);
             } else {
-                p.image(this.sunglassesImg, this.getXLocation() + 10, this.getYLocation() - 18);
+                p.image(this.sunglasses, this.getXLocation() + 10, this.getYLocation() - 18);
             }
         }
     }
@@ -129,9 +129,9 @@ class Cat extends Pet {
     drawSantaHat(p) {
         if (this.showSantaHat) {
             if (this.movingLeft) {
-                p.image(this.santaHat2Img, this.getXLocation() - 3, this.getYLocation() - 25);
+                p.image(this.santaHat2, this.getXLocation() - 3, this.getYLocation() - 25);
             } else {
-                p.image(this.santaHatImg, this.getXLocation() + 10, this.getYLocation() - 25);
+                p.image(this.santaHat, this.getXLocation() + 10, this.getYLocation() - 25);
             }
         }
     }
