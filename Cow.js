@@ -17,12 +17,12 @@ class Cow extends Pet {
             if (p.frameCount % 10 === 0) {
                 this.currentFrame = (this.currentFrame + 1) % this.numFrames;
             }
-            p.image(this.cowImages[this.currentFrame], this.xLocation - 10, this.yLocation - 20);
+            p.image(this.cowImages[this.currentFrame], this.xLocation - 15, this.yLocation - 10,30,20);
         } else {
             if (p.frameCount % 10 === 0) {
                 this.currentFrame = (this.currentFrame + 1) % this.numFrames;
             }
-            p.image(this.cowImages2[this.currentFrame], this.xLocation - 10, this.yLocation - 20);
+            p.image(this.cowImages2[this.currentFrame], this.xLocation - 15, this.yLocation - 10,30,20);
         }
 
         for (let poop of this.poopsList) {
