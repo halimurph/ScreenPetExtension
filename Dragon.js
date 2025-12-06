@@ -109,7 +109,7 @@ class Dragon extends Pet {
 
         this.windmillHat = p.loadImage("sprites/windmillHat.png");
         this.windmillHat.resize(12, 12);
-        this.windmillHat2 = p.loadImage("Ssprites/windmillHatflipped.png");
+        this.windmillHat2 = p.loadImage("sprites/windmillHatflipped.png");
         this.windmillHat2.resize(12, 12);
 
         this.collar = p.loadImage("sprites/collar.png");
