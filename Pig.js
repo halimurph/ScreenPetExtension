@@ -12,7 +12,7 @@ class Pig extends Pet {
         this.pigImages = new Array(this.numFrames);
         this.pigImages2 = new Array(this.numFrames);
         this.normalSpeed = 2; // Normal movement speed
-        this.chaseSpeed = 10; // FAST chase speed!
+        this.chaseSpeed = 20; // FAST chase speed!
     }
 
     draw(p) {
