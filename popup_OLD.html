@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 420px;
+            font-family: "Chicago", "Charcoal", monospace;
+            background: #c0c0c0;
+            color: #000;
+            padding: 0;
+        }
+        
+        /* Mac OS 9 Window */
+        .window {
+            border: 2px solid #000;
+            background: #c0c0c0;
+        }
+        
+        .title-bar {
+            background: linear-gradient(to bottom, #fff 0%, #c0c0c0 100%);
+            border-bottom: 2px solid #000;
+            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 24px;
+        }
+        
+        .title-text {
+            font-size: 12px;
+            font-weight: bold;
+            flex-grow: 1;
+            text-align: center;
+        }
+        
+        .close-box {
+            width: 14px;
+            height: 14px;
+            border: 1px solid #000;
+            background: #fff;
+            position: relative;
+        }
+        
+        .close-box::before,
+        .close-box::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 1px;
+            background: #000;
+        }
+        
+        .close-box::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        
+        .close-box::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        
+        .content {
+            padding: 12px;
+        }
+        
+        /* Coin Display */
+        .coin-display {
+            background: #fff;
+            border: 2px inset #808080;
+            padding: 8px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        /* Pet Grid */
+        .section-title {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            margin-top: 8px;
+        }
+        
+        .pet-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .pet-button {
+            background: #c0c0c0;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+        }
+        
+        .pet-button-inner {
+            border: 2px outset #fff;
+            padding: 6px;
+            background: #c0c0c0;
+        }
+        
+        .pet-button:active .pet-button-inner {
+            border-style: inset;
+        }
+        
+        .pet-button.active .pet-button-inner {
+            border: 2px solid #000;
+            background: #808080;
+        }
+        
+        .pet-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 4px;
+            image-rendering: pixelated;
+            filter: grayscale(100%) contrast(1.2);
+        }
+        
+        .pet-icon[style*="display: none"] + .pet-name::before {
+            content: attr(data-emoji);
+            display: block;
+            font-size: 36px;
+            margin-bottom: 4px;
+        }
+        
+        .pet-button.active .pet-icon {
+            filter: grayscale(100%) contrast(1.2) invert(1);
+        }
+        
+        .pet-name {
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        /* Mac OS Buttons */
+        .mac-button {
+            background: #c0c0c0;
+            border: 2px outset #fff;
+            padding: 6px 12px;
+            font-family: "Chicago", "Charcoal", monospace;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 4px 0;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .mac-button:active {
+            border-style: inset;
+            background: #808080;
+            color: #fff;
+        }
+        
+        .mac-button:hover {
+            background: #d0d0d0;
+        }
+        
+        .mac-button.primary {
+            border: 3px outset #fff;
+        }
+        
+        /* Store Modal */
+        .store-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        
+        .store-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .store-window {
+            width: 380px;
+            max-height: 480px;
+            overflow-y: auto;
+        }
+        
+        .store-items {
+            background: #fff;
+            border: 2px inset #808080;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        
+        .store-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid #c0c0c0;
+        }
+        
+        .store-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+            image-rendering: pixelated;
+            filter: grayscale(100%) contrast(1.2);
+        }
+        
+        .item-info {
+            flex-grow: 1;
+        }
+        
+        .item-name {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        
+        .item-price {
+            font-size: 10px;
+            color: #404040;
+        }
+        
+        .buy-button {
+            background: #c0c0c0;
+            border: 2px outset #fff;
+            padding: 4px 8px;
+            font-family: "Chicago", "Charcoal", monospace;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .buy-button:active {
+            border-style: inset;
+        }
+        
+        .buy-button.owned {
+            background: #808080;
+            color: #fff;
+            border: 2px inset #808080;
+            cursor: pointer; /* Keep clickable! */
+        }
+        
+        .buy-button.owned:hover {
+            background: #606060;
+        }
+        
+        .controls {
+            border-top: 2px solid #000;
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+        
+        /* Pet Info */
+        .pet-info {
+            background: #fff;
+            border: 2px inset #808080;
+            padding: 8px;
+            margin-top: 12px;
+            font-size: 10px;
+            line-height: 1.4;
+            min-height: 60px;
+        }
+        
+        .info-title {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        .pet-button:hover {
+            cursor: help;
+        }
+    </style>
+</head>
+<body>
+    <div class="window">
+        <div class="title-bar">
+            <div class="close-box"></div>
+            <div class="title-text">Screen Pet Control Panel</div>
+            <div style="width: 14px;"></div>
+        </div>
+        
+        <div class="content">
+            <!-- Coin Display -->
+            <div class="coin-display">
+                💰 Coins: <span id="coin-count">0</span>
+            </div>
+            
+            <!-- Pet Selection -->
+            <div class="section-title">Select Pet:</div>
+            <div class="pet-grid">
+                <button class="pet-button active" data-pet="cat" data-description="🐱 Cat - DRAG to move! Click and drag the cat around the screen.">
+                    <div class="pet-button-inner">
+                        <img src="../sprites/Gato-1.png" class="pet-icon" alt="Cat" onerror="this.style.display='none'">
+                        <div class="pet-name">Cat</div>
+                    </div>
+                </button>
+                <button class="pet-button" data-pet="cow" data-description="🐄 Cow - Press 'A' key to interact!">
+                    <div class="pet-button-inner">
+                        <img src="../sprites/Vaca-1.png" class="pet-icon" alt="Cow" onerror="this.style.display='none'">
+                        <div class="pet-name">Cow</div>
+                    </div>
+                </button>
+                <button class="pet-button" data-pet="pig" data-description="🐷 Pig - CLICK on pet to interact! Also chases coins at high speed.">
+                    <div class="pet-button-inner">
+                        <img src="../sprites/Cerdo-1.png" class="pet-icon" alt="Pig" onerror="this.style.display='none'">
+                        <div class="pet-name">Pig</div>
+                    </div>
+                </button>
+                <button class="pet-button" data-pet="chicken" data-description="🐔 Chicken - CLICK on pet to make it react!">
+                    <div class="pet-button-inner">
+                        <img src="../sprites/Pollito-1.png" class="pet-icon" alt="Chicken" onerror="this.style.display='none'">
+                        <div class="pet-name">Chicken</div>
+                    </div>
+                </button>
+                <button class="pet-button" data-pet="horse" data-description="🐴 Horse - Press SPACE to make it jump!">
+                    <div class="pet-button-inner">
+                        <img src="../sprites/Caballo-1.png" class="pet-icon" alt="Horse" onerror="this.style.display='none'">
+                        <div class="pet-name">Horse</div>
+                    </div>
+                </button>
+                <button class="pet-button" data-pet="dragon" data-description="🐉 Dragon - Press 'D' key to interact! A mythical companion.">
+                    <div class="pet-button-inner">
+                        <img src="../sprites/Dragon-1.png" class="pet-icon" alt="Dragon" onerror="this.style.display='none'">
+                        <div class="pet-name">Dragon</div>
+                    </div>
+                </button>
+            </div>
+            
+            <!-- Pet Info -->
+            <div class="pet-info">
+                <div class="info-title">ℹ️ Pet Info:</div>
+                <div id="pet-description">Hover over a pet to see its special abilities!</div>
+            </div>
+            
+            <!-- Store Button -->
+            <button class="mac-button primary" id="open-store">🛍️ Item Store</button>
+            
+            <!-- Controls -->
+            <div class="controls">
+                <div class="section-title">Controls:</div>
+                <button class="mac-button" id="toggle-coins">Hide Coins</button>
+                <button class="mac-button" id="reset-position">Reset Position</button>
+                <button class="mac-button" id="hide-pet">Hide Pet</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Store Modal -->
+    <div class="store-modal" id="store-modal">
+        <div class="window store-window">
+            <div class="title-bar">
+                <div class="close-box" id="close-store"></div>
+                <div class="title-text">Item Store</div>
+                <div style="width: 14px;"></div>
+            </div>
+            
+            <div class="content">
+                <div class="coin-display">
+                    💰 Coins: <span id="store-coin-count">0</span>
+                </div>
+                
+                <div class="section-title">Hats:</div>
+                <div class="store-items">
+                    <div class="store-item">
+                        <img src="../sprites/gentlemanHat.png" class="item-icon" alt="Gentleman Hat" onerror="this.style.display='none'">
+                        <div class="item-info">
+                            <div class="item-name">Gentleman Hat</div>
+                            <div class="item-price">Cost: 50 coins</div>
+                        </div>
+                        <button class="buy-button" data-item="gentlemanHat" data-price="50">Buy</button>
+                    </div>
+                    <div class="store-item">
+                        <img src="../sprites/cowboyHat.png" class="item-icon" alt="Cowboy Hat" onerror="this.style.display='none'">
+                        <div class="item-info">
+                            <div class="item-name">Cowboy Hat</div>
+                            <div class="item-price">Cost: 75 coins</div>
+                        </div>
+                        <button class="buy-button" data-item="cowboyHat" data-price="75">Buy</button>
+                    </div>
+                    <div class="store-item">
+                        <img src="../sprites/windmillHat.png" class="item-icon" alt="Windmill Hat" onerror="this.style.display='none'">
+                        <div class="item-info">
+                            <div class="item-name">Windmill Hat</div>
+                            <div class="item-price">Cost: 100 coins</div>
+                        </div>
+                        <button class="buy-button" data-item="windmillHat" data-price="100">Buy</button>
+                    </div>
+                    <div class="store-item">
+                        <img src="../sprites/santaHat.png" class="item-icon" alt="Santa Hat" onerror="this.style.display='none'">
+                        <div class="item-info">
+                            <div class="item-name">Santa Hat</div>
+                            <div class="item-price">Cost: 150 coins</div>
+                        </div>
+                        <button class="buy-button" data-item="santaHat" data-price="150">Buy</button>
+                    </div>
+                </div>
+                
+                <div class="section-title">Accessories:</div>
+                <div class="store-items">
+                    <div class="store-item">
+                        <img src="../sprites/collar.png" class="item-icon" alt="Collar" onerror="this.style.display='none'">
+                        <div class="item-info">
+                            <div class="item-name">Collar</div>
+                            <div class="item-price">Cost: 60 coins</div>
+                        </div>
+                        <button class="buy-button" data-item="collar" data-price="60">Buy</button>
+                    </div>
+                    <div class="store-item">
+                        <img src="../sprites/sunglasses.png" class="item-icon" alt="Sunglasses" onerror="this.style.display='none'">
+                        <div class="item-info">
+                            <div class="item-name">Sunglasses</div>
+                            <div class="item-price">Cost: 80 coins</div>
+                        </div>
+                        <button class="buy-button" data-item="sunglasses" data-price="80">Buy</button>
+                    </div>
+                </div>
+                
+                <button class="mac-button" id="close-store-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

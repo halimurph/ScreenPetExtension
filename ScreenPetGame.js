@@ -1,3 +1,5 @@
+// ScreenPetGame.js - EXTENSION VERSION with transparent background
+
 class ScreenPetGame {
     constructor() {
         this.totalCoins = 0;
@@ -20,6 +22,7 @@ class ScreenPetGame {
         this.rectX = 450;
         this.rectY = 10;
 
+        // No background image for extension!
         this.background = null;
 
         this.isGentlemanHatUnlocked = false;
@@ -60,19 +63,19 @@ class ScreenPetGame {
     }
 
     addPets() {
-    this.pets.push(this.thePet);
-    this.pets.push(this.theCow);
-    this.pets.push(this.theChicken);
-    this.pets.push(this.theHorse);
-    this.pets.push(this.thePig);
-    this.pets.push(this.theDragon);
-}
+        this.pets.push(this.thePet);
+        this.pets.push(this.theCow);
+        this.pets.push(this.theChicken);
+        this.pets.push(this.theHorse);
+        this.pets.push(this.thePig);
+        this.pets.push(this.theDragon);
+    }
 
     createCoins() {
         if (this.coins.length > 20) {
             this.coins = [];
         }
-        this.totalCoins = Math.floor(Math.random() * 20) + 1; // Random number between 1 and 20
+        this.totalCoins = Math.floor(Math.random() * 20) + 1;
         console.log("Creating coins with size: " + this.coins.length + " total: " + this.totalCoins);
 
         for (let i = 1; i <= this.totalCoins; i++) {
@@ -85,51 +88,49 @@ class ScreenPetGame {
 
     regenerateCoinsIfNeeded() {
         let currentTime = Date.now();
-        if (currentTime - this.lastCoinGenerationTime >= 30000) { // 30 seconds
-            this.createCoins(); // Regenerate coins
-            this.lastCoinGenerationTime = currentTime; // Update the last coin generation time
+        if (currentTime - this.lastCoinGenerationTime >= 30000) {
+            this.createCoins();
+            this.lastCoinGenerationTime = currentTime;
         }
     }
 
     moveTowardsCoin(p) {
-    if (this.coins.length > 0) {
-        let nearestCoin = null;
-        let shortestDistance = Number.MAX_VALUE;
-        let radius = 100;
+        if (this.coins.length > 0) {
+            let nearestCoin = null;
+            let shortestDistance = Number.MAX_VALUE;
+            let radius = 100;
 
-        for (let c of this.coins) {
-            // Use getXLocation() consistently
-            let distance = p.dist(
-                this.currentPet.getXLocation(), 
-                this.currentPet.getYLocation(), 
-                c.getxLocation(), 
-                c.getyLocation()
-            );
+            for (let c of this.coins) {
+                let distance = p.dist(
+                    this.currentPet.getXLocation(), 
+                    this.currentPet.getYLocation(), 
+                    c.getxLocation(), 
+                    c.getyLocation()
+                );
 
-            if (distance < shortestDistance && distance <= radius) {
-                shortestDistance = distance;
-                nearestCoin = c;
-            }
-        }
-
-        if (nearestCoin !== null) {
-            this.currentPet.xTarget = nearestCoin.getxLocation();
-            this.currentPet.yTarget = nearestCoin.getyLocation();
-
-            // Check if close enough to collect
-            let dx = Math.abs(this.currentPet.getXLocation() - nearestCoin.getxLocation());
-            let dy = Math.abs(this.currentPet.getYLocation() - nearestCoin.getyLocation());
-            
-            if (dx < 15 && dy < 15) {
-                let index = this.coins.indexOf(nearestCoin);
-                if (index > -1) {
-                    this.coins.splice(index, 1);
+                if (distance < shortestDistance && distance <= radius) {
+                    shortestDistance = distance;
+                    nearestCoin = c;
                 }
-                this.collectedCoinCount++;
+            }
+
+            if (nearestCoin !== null) {
+                this.currentPet.xTarget = nearestCoin.getxLocation();
+                this.currentPet.yTarget = nearestCoin.getyLocation();
+
+                let dx = Math.abs(this.currentPet.getXLocation() - nearestCoin.getxLocation());
+                let dy = Math.abs(this.currentPet.getYLocation() - nearestCoin.getyLocation());
+                
+                if (dx < 15 && dy < 15) {
+                    let index = this.coins.indexOf(nearestCoin);
+                    if (index > -1) {
+                        this.coins.splice(index, 1);
+                    }
+                    this.collectedCoinCount++;
+                }
             }
         }
     }
-}
 
     createStore() {
         this.theStore.createItems();
@@ -164,68 +165,29 @@ class ScreenPetGame {
     }
 
     draw(p) {
-        p.image(this.background, 0, 0);
-        p.fill(255);
-        p.rect(this.getRectX(), this.getRectY(), 50, 25);  // Always draw the box
-
-        p.fill(0);
-        p.textSize(12);
-        p.textAlign(p.CENTER, p.CENTER);
-        p.text("Pet", this.getRectX() + 25, this.getRectY() + 12);  // Always say "Pet"
-
-        // Now handle contents inside
-        if (this.isClicked) {
-            p.fill(200);
-            p.rect(this.getRectX(), this.getRectY(), 50, 25);
-
-            p.fill(0);
-            p.textSize(12);
-            p.textAlign(p.CENTER, p.CENTER);
-            p.text("Pet", this.getRectX() + 25, this.getRectY() + 12);
-            // Show pets
-            p.textAlign(p.LEFT, p.CENTER);
-            for (let i = 0; i < this.pets.length; i++) {
-                let y = this.getRectY() + 30 + i * 20;
-                p.fill(this.selectedPetIndex === i ? 200 : 255);
-                p.rect(this.getRectX(), y, 120, 20); // Widen box to fit key label
-
-                let petCommands = [
-                    "click/drag", "key A", "click",
-                    "space", "click", "key D"
-                ];
-
-                p.fill(0);
-                let label = "Press " + (i + 1) + ": " + this.pets[i].getName() + "- " + petCommands[i];
-                p.text(label, this.getRectX() + 5, y + 10);
-            }
-        } else {
-            // Always draw the box
-            p.fill(0);
-            p.textSize(12);
-            p.textAlign(p.CENTER, p.CENTER);
-            p.text("Pet", this.getRectX() + 25, this.getRectY() + 12);
-            // Show store
-            this.theStore.draw(p);  // Store still only draws when not in pet mode
-        }
-
-        this.babyDuck(p);
-        this.currentPet.draw(p);
+        // TRANSPARENT BACKGROUND - No background image!
+        p.clear();
+        
+        // Draw coins
         for (let aCoin of this.coins) {
             aCoin.draw(p);
         }
 
-        p.fill(0);
-        p.textSize(20);
-        p.textAlign(p.CENTER, p.CENTER);
-        p.text("Collected " + this.collectedCoinCount + " coins", 100, 500);
+        // Draw baby duck
+        this.babyDuck(p);
+        
+        // Draw current pet
+        this.currentPet.draw(p);
+
+        // Optional: Draw coin counter (semi-transparent background)
+        p.fill(0, 0, 0, 100);
+        p.rect(10, 10, 150, 30, 5);
+        p.fill(255);
+        p.textSize(16);
+        p.textAlign(p.LEFT, p.CENTER);
+        p.text("🪙 " + this.collectedCoinCount, 20, 25);
 
         this.moveTowardsCoin(p);
-
-        p.fill(0);
-        p.textSize(20);
-        p.textAlign(p.LEFT, p.CENTER);
-        p.text(this.message, 30, 550);
-
         this.regenerateCoinsIfNeeded();
         this.unlockPetsBasedOnItems();
     }
@@ -238,13 +200,12 @@ class ScreenPetGame {
         this.theDragon.loadMedia(p);
         this.thePig.loadMedia(p);
 
-        // FIXED: Added p. prefix to all loadImage calls
         this.coinImages[0] = p.loadImage("sprites/coin-1.png");
         this.coinImages[1] = p.loadImage("sprites/coin-2.png");
         this.coinImages[2] = p.loadImage("sprites/coin-3.png");
         this.coinImages[3] = p.loadImage("sprites/coin-4.png");
         this.coinImages[4] = p.loadImage("sprites/coin-5.png");
-        this.coinImages[5] = p.loadImage("sprites/coin-6.png");  // FIXED: was "oin-6.png"
+        this.coinImages[5] = p.loadImage("sprites/coin-6.png");
         this.coinImages[6] = p.loadImage("sprites/coin-7.png");
         this.coinImages[7] = p.loadImage("sprites/coin-8.png");
         this.coinImages[8] = p.loadImage("sprites/coin-9.png");
@@ -306,19 +267,17 @@ class ScreenPetGame {
             this.babyDuckImages[i].resize(10, 10);
             this.babyDuckImages2[i].resize(10, 10);
         }
-        this.background = p.loadImage("sprites/background.jpg");
     }
 
     unlockPetsBasedOnItems() {
-        // Unlock pets when certain items are unlocked
         if (this.isCowboyHatUnlocked) {
-            this.thePig.setPetLocked(false); // Unlock pig when cowboy hat is unlocked
+            this.thePig.setPetLocked(false);
         }
         if (this.isGentlemanHatUnlocked) {
-            this.theDragon.setPetLocked(false); // Unlock dragon when gentleman hat is unlocked
+            this.theDragon.setPetLocked(false);
         }
         if (this.isWindMillHatUnlocked) {
-            this.theChicken.setPetLocked(false);  // Unlock chicken when windmill hat is unlocked
+            this.theChicken.setPetLocked(false);
         }
         if (this.isCollarUnlocked) {
             this.theHorse.setPetLocked(false);
@@ -332,115 +291,27 @@ class ScreenPetGame {
     }
 
     mouseClicked(p) {
-    // Check if pig was clicked
-    let dPig = p.dist(p.mouseX, p.mouseY, this.thePig.xLocation, this.thePig.yLocation);
-    if (dPig < 30 && this.currentPet === this.thePig) {
-        this.thePig.mouseClicked(p);
-        this.thePig.chaseMouse(p);
+        let dPig = p.dist(p.mouseX, p.mouseY, this.thePig.xLocation, this.thePig.yLocation);
+        if (dPig < 30 && this.currentPet === this.thePig) {
+            this.thePig.mouseClicked(p);
+            this.thePig.chaseMouse(p);
+        }
+        
+        let dChicken = p.dist(p.mouseX, p.mouseY, this.theChicken.xLocation, this.theChicken.yLocation);
+        if (dChicken < 30 && this.currentPet === this.theChicken) {
+            this.theChicken.mouseClicked(p);
+            this.theChicken.runAway(p);
+        }
     }
-    
-    // Check if chicken was clicked
-    let dChicken = p.dist(p.mouseX, p.mouseY, this.theChicken.xLocation, this.theChicken.yLocation);
-    if (dChicken < 30 && this.currentPet === this.theChicken) {
-        this.theChicken.mouseClicked(p);
-        this.theChicken.runAway(p);
-    }
-    
-    if (p.mouseX >= this.theStore.getRectX() && p.mouseX <= this.theStore.getRectX() + 50 &&
-        p.mouseY >= this.theStore.getRectY() && p.mouseY <= this.theStore.getRectY() + 25) {
-        this.theStore.storeBox(p);
-    } else if (p.mouseX >= this.getRectX() && p.mouseX <= this.getRectX() + 50 &&
-               p.mouseY >= this.getRectY() && p.mouseY <= this.getRectY() + 25) {
-        this.petBox(p);
-    }
-}
 
     mousePressed(p, x, y) {
         this.thePet.mousePressed(p, x, y);
-
-        let foundItem = this.theStore.findItem(x, y);
-        if (foundItem.getItemName() !== "NOTFOUND") {
-
-            console.log("FOUND: " + foundItem.getItemName());
-            if (foundItem.getItemLocked() && this.getCollectedCoinCount() >= foundItem.getPrice()) {
-                foundItem.setItemLocked(false);
-                this.collectedCoinCount -= foundItem.getPrice();
-                this.message = foundItem.getItemName() + " unlocked!";
-                this.unlockPetsBasedOnItems();
-            } else if (foundItem.getItemLocked()) {
-                this.message = "Not enough coins to unlock " + foundItem.getItemName();
-            }
-            if (!foundItem.getItemLocked()) {
-                let isAlreadyOn = false;
-
-                switch (foundItem.getItemName()) {
-                    case "Baby Duck":
-                        isAlreadyOn = this.showBabyDuck;
-                        break;
-                    case "Gentleman Hat":
-                        isAlreadyOn = this.currentPet.showGentlemanHat;
-                        break;
-                    case "Santa Hat":
-                        isAlreadyOn = this.currentPet.showSantaHat;
-                        break;
-                    case "Cowboy Hat":
-                        isAlreadyOn = this.currentPet.showCowboyHat;
-                        break;
-                    case "Collar":
-                        isAlreadyOn = this.currentPet.showCollar;
-                        break;
-                    case "Windmill Hat":
-                        isAlreadyOn = this.currentPet.showWindMillHat;
-                        break;
-                    case "Sunglasses":
-                        isAlreadyOn = this.currentPet.showSunglasses;
-                        break;
-                }
-
-                // Turn all off first
-                this.showBabyDuck = false;
-                this.currentPet.showGentlemanHat = false;
-                this.currentPet.showSantaHat = false;
-                this.currentPet.showCowboyHat = false;
-                this.currentPet.showCollar = false;
-                this.currentPet.showWindMillHat = false;
-                this.currentPet.showSunglasses = false;
-
-                // If it wasn't already on, turn it on
-                if (!isAlreadyOn) {
-                    switch (foundItem.getItemName()) {
-                        case "Baby Duck":
-                            this.showBabyDuck = true;
-                            break;
-                        case "Gentleman Hat":
-                            this.currentPet.showGentlemanHat = true;
-                            break;
-                        case "Santa Hat":
-                            this.currentPet.showSantaHat = true;
-                            break;
-                        case "Cowboy Hat":
-                            this.currentPet.showCowboyHat = true;
-                            break;
-                        case "Collar":
-                            this.currentPet.showCollar = true;
-                            break;
-                        case "Windmill Hat":
-                            this.currentPet.showWindMillHat = true;
-                            break;
-                        case "Sunglasses":
-                            this.currentPet.showSunglasses = true;
-                            break;
-                    }
-                }
-            }
-        }
     }
 
     babyDuck(p) {
         if (this.showBabyDuck) {
             let easing = 0.05;
 
-            // Determine direction BEFORE updating the position
             this.movingLeft = this.babyDuckX > this.currentPet.getXLocation();
 
             let dx = this.currentPet.getXLocation() - this.babyDuckX;
@@ -454,9 +325,9 @@ class ScreenPetGame {
             }
 
             if (this.movingLeft) {
-                p.image(this.babyDuckImages[this.currentFrame], this.babyDuckX + 5, this.babyDuckY - 10,10,10);
+                p.image(this.babyDuckImages[this.currentFrame], this.babyDuckX + 5, this.babyDuckY - 10, 10, 10);
             } else {
-                p.image(this.babyDuckImages2[this.currentFrame], this.babyDuckX + 5, this.babyDuckY - 10,10,10);
+                p.image(this.babyDuckImages2[this.currentFrame], this.babyDuckX + 5, this.babyDuckY - 10, 10, 10);
             }
         }
     }
@@ -471,7 +342,7 @@ class ScreenPetGame {
 
     keyPressed(p) {
         if (p.key === 'A' || p.key === 'a') {
-            this.theCow.poops();
+            this.theCow.poops(p);
         }
 
         if (p.key === '1') {
@@ -501,33 +372,5 @@ class ScreenPetGame {
         } else if (p.key === 'D' || p.key === 'd') {
             this.theDragon.flies(p);
         }
-    }
-
-    toString() {
-        let s = "Game:\n";
-        s += "Total Coins Generated: " + this.coins.length + "\n";
-        s += "Collected Coins Generated: " + this.collectedCoinCount + "\n";
-
-        s += this.theStore;
-
-        s += "Pet: " + this.thePet + "\n";
-        if (this.thePet.getPetLocked()) {
-            s += "Pet is unlocked\n";
-        } else {
-            s += "Pet is locked\n";
-        }
-
-        return s;
-    }
-
-    runTests() {
-        console.assert(this.collectedCoinCount === 0);
-        console.assert(this.coins.length > 0 && this.coins.length <= 20);
-        console.assert(this.coins[0] !== null);
-        console.assert(this.coins[this.coins.length - 1] !== null);
-        console.assert(this.totalCoins === this.coins.length);
-
-        this.theStore.runTests();
-        this.thePet.runTests();
     }
 }
